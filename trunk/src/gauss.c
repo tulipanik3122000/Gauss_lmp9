@@ -16,6 +16,23 @@ int eliminate(Matrix *mat, Matrix *b){
 
         for(i=0; i<column-1; i++)
         {
+                for(j=i+1; j<row; j++)  //Szukamy najwiekszego elementu pod przekatna
+                {
+                        if(fabs(ma[j][i])>fabs(ma[i][i]))
+                                max = j;
+                }
+
+                if(max != i)    //Zamiana wierszy jesli znajdziemy wiekszy element
+                {
+                        tem = ma[max];
+                        ma[max] = ma[i];
+                        ma[i] = tem;
+
+                        tem2 = mar[max][0];
+                        mar[max][0] = mar[i][0];
+                        mar[i][0] = tem2;
+                }
+
 
               for(q=i+1; q<row; q++)
                 {

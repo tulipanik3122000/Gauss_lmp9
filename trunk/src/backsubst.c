@@ -5,14 +5,17 @@
  * Zwraca 2 - błąd nieprawidłowych rozmiarów macierzy
  */
 int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
-	if(mat->r!=mat->c || mat->r!=b->r){
+	if(mat->r!=mat->c || mat->r!=b->r || b->c!=1){
 		return 2;
 	}
 	int j=1;
 	int tmp;
 	int h=mat->c-1;
 	int l=mat->r-1;
-	x->data[l][0]=(b->data[l][0])/(mat->data[l][h]);
+	if(mat->data[l][h]!=0)
+		x->data[l][0]=(b->data[l][0])/(mat->data[l][h]);
+	else
+		return 1;
 	for(; l>=0;l--){
 		tmp=b->data[l][0];
 		for(; h>(mat->c)-j;h--)

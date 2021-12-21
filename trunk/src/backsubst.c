@@ -10,17 +10,16 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 	}
 	int j=1;
 	int tmp;
-	int h=mat->c;
+	int h=mat->c-1;
 	int l=mat->r-1;
 	x->data[l][0]=(b->data[l][0])/(mat->data[l][h]);
-	for(l; l>=0;l--){
-		tmp=b->data[l][mat->c];
-		for(h; h>(mat->c)-j;h--){
-			tmp=b->data[l][0]-((mat->data[l][h])*(x->data[h][0]));
-			}
-		if(mat->data[(mat->c)-j][l]!=0){
-			x->data[(mat->c)-j][l]=tmp/(mat->data[l][(mat->c)-j]);
-		}else{
+	for(; l>=0;l--){
+		tmp=b->data[l][0];
+		for(; h>(mat->c)-j;h--)
+			tmp-=(mat->data[l][h])*(x->data[h][0]);
+		if(mat->data[l][(mat->c)-j]!=0)
+			x->data[l][(mat->c)-j]=tmp/(mat->data[l][(mat->c)-j]);
+		else{
 			return 1;
 			}
 		j++;

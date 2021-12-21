@@ -1,4 +1,4 @@
-include "gauss.h"
+#include "gauss.h"
 #include <math.h>
 
 /**

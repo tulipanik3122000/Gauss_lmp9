@@ -2,6 +2,7 @@
 #define _BACKSUBST_H
 
 #include "mat_io.h"
+#include <stdio.h>
 
 /**
  * Zwraca 0 - wsteczne podstawienie zakonczone sukcesem

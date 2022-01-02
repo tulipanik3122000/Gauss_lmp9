@@ -6,6 +6,7 @@
  */
 int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 	if(mat->r!=mat->c || mat->r!=b->r || b->c!=1){
+		print("Nieprawidłowe rozmiary macierzy!");
 		return 2;
 	}
 	int j=1;
@@ -14,8 +15,10 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 	int l=mat->r-1;
 	if(mat->data[l][h]!=0)
 		x->data[l][0]=(b->data[l][0])/(mat->data[l][h]);
-	else
+	else{
+		print("Macierz jest macierzą osobliwą");
 		return 1;
+	}
 	for(; l>=0;l--){
 		tmp=b->data[l][0];
 		for(; h>(mat->c)-j;h--)
@@ -23,6 +26,7 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 		if(mat->data[l][(mat->c)-j]!=0)
 			x->data[l][(mat->c)-j]=tmp/(mat->data[l][(mat->c)-j]);
 		else{
+			print("Nieprawidłowa eliminacja Gaussa!");
 			return 1;
 			}
 		j++;

@@ -17,9 +17,21 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
+	if (res==2){
+		printf("Macierz jest macierzą osobliwą!");
+		exit(1);
+	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
+		if(res==1){
+			printf("Dzielenie przez 0!");
+			exit(1);
+		}
+		else if (res==2){
+			printf("Podana macierz ma nieprwaidłowe wymairy!");
+			exit(1);
+		}
 
 		printToScreen(x);
 	  freeMatrix(x);

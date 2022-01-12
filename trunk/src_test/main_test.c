@@ -18,7 +18,7 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	res = eliminate(A,b);
-	if (res==2){
+	if (res==1){
 		printf("Macierz jest macierzą osobliwą!");
 		exit(1);
 	}

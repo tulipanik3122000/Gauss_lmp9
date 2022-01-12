@@ -16,6 +16,11 @@ int main(int argc, char ** argv) {
 	printToScreen(A);
 	printToScreen(b);
 
+	if((A->r!=A->c) | (b->r!=A->r)){
+		printf("Macierze mają nieprawidłowe wymiary!");
+		exit(1);
+	}
+
 	res = eliminate(A,b);
 	if (res==1){
 		printf("Macierz jest macierzą osobliwą!");

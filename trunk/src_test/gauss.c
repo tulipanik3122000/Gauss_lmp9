@@ -26,6 +26,7 @@ int eliminate(Matrix *mat, Matrix *b){
 	int i,j,k;
 	double dziel;
 	for(i=0; i<mat->c; i++){
+		diagonala(mat, b, i);
 		if((mat->data[i][i])==0)
 			return 1;
 		diagonala(mat, b, i);

@@ -9,24 +9,25 @@ int  backsubst(Matrix *x, Matrix *mat, Matrix *b) {
 		return 2;
 	}
 	int j=1;
-	int tmp;
-	int h=mat->c-1;
-	int l=mat->r-1;
+	double tmp;
+	int h=(mat->c)-1;
+	int pamiec=h;
+	int l=(mat->r)-1;
 	if(mat->data[l][h]!=0)
 		x->data[l][0]=(b->data[l][0])/(mat->data[l][h]);
-	else{
+	else
 		return 1;
-	}
 	for(; l>=0;l--){
 		tmp=b->data[l][0];
 		for(; h>(mat->c)-j;h--)
 			tmp-=(mat->data[l][h])*(x->data[h][0]);
 		if(mat->data[l][(mat->c)-j]!=0)
-			x->data[l][(mat->c)-j]=tmp/(mat->data[l][(mat->c)-j]);
+			x->data[(mat->c)-j][0]=tmp/(mat->data[l][(mat->c)-j]);
 		else{
 			return 1;
 			}
 		j++;
+		h=pamiec;
 }
 		return 0;
 }

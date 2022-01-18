@@ -17,25 +17,25 @@ int main(int argc, char ** argv) {
 	printToScreen(b);
 
 	if((A->r!=A->c) | (b->r!=A->r)){
-		printf("Macierze mają nieprawidłowe wymiary!");
-		exit(1);
+		printf("Macierze mają nieprawidłowe wymiary!\n");
+		return EXIT_SUCCESS;
 	}
 
 	res = eliminate(A,b);
 	if (res==1){
-		printf("Macierz jest macierzą osobliwą!");
-		exit(1);
+		printf("Macierz jest macierzą osobliwą!\n");
+		return EXIT_SUCCESS;
 	}
 	x = createMatrix(b->r, 1);
 	if (x != NULL) {
 		res = backsubst(x,A,b);
 		if(res==1){
-			printf("Dzielenie przez 0!");
-			exit(1);
+			printf("Dzielenie przez 0!\n");
+			return EXIT_SUCCESS;
 		}
 		else if (res==2){
-			printf("Podana macierz ma nieprwaidłowe wymairy!");
-			exit(1);
+			printf("Podana macierz ma nieprwaidłowe wymairy!\n");
+			return EXIT_SUCCESS;
 		}
 
 		printToScreen(x);

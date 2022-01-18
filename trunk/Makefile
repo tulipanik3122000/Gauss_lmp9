@@ -19,3 +19,8 @@ test5: compile
 	bin/testy dane/A5 dane/b5
 
 testall: test1 test2 test3 test4 test5
+
+
+
+
+
